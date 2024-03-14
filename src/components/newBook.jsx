@@ -3,11 +3,15 @@ import Modal from "./modal";
 import Button from "./button";
 import { Helmet } from "react-helmet";
 
+//Child Components
+import CreateBook from "./CrudBooks/createBook"
+
 const NewBook = () => {
   const [modal, setModal] = useState({
     isOpen: false,
     type: "",
   });
+
   return (
     <div className="flex flex-col items-center bg-violet-500 h-screen w-full">
       <Helmet>
@@ -15,7 +19,7 @@ const NewBook = () => {
         <meta name="description" content="New Book" />
       </Helmet>
       {modal.type === "" && (
-        <h1 className="text-3xl text-white pt-10 animate-pulse">New Book</h1>
+        <h1 className="text-5xl text-white pt-10 animate-pulse">New Book</h1>
       )}
       {modal.type === "CREATE" && (
         <Modal
@@ -23,56 +27,7 @@ const NewBook = () => {
           onClose={() => setModal({ ...modal, type: "" })}
           title="Create New a Book"
         >
-          <div className="flex flex-col space-y-4">
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Title"
-                className="px-4 m-2 rounded-lg py-2 outline-none"
-              />
-            </div>
-          </div>
+          <CreateBook/>
         </Modal>
       )}
       {modal.type === "EDIT" && (
